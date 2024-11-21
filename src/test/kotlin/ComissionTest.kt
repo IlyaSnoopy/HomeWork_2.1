@@ -88,7 +88,7 @@ class ComissionTest {
 
         val result = comission(card, previous, transfer)
 
-        assertEquals(0, result)
+        assertEquals(10, result)
     }
 
     @Test
