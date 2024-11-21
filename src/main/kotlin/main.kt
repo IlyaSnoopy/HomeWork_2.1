@@ -4,7 +4,7 @@ const val ERROR_TYPE = -1
 const val ERROR_LIMIT = -2
 
 fun main() {
-    println(comission("MasterCard", 0, 100_000))
+
 }
 
 fun comission(card: String, previous: Int, amount: Int): Int {
@@ -15,9 +15,10 @@ fun comission(card: String, previous: Int, amount: Int): Int {
         "Visa" -> max(35, (amount * 0.0075).toInt())
         "Мир" -> max(35, (amount * 0.0075).toInt())
         "MasterCard" -> return when {
+            amount < 300 -> (amount * 0.006 + 20).toInt()
             previous >= 75_000 -> (amount * 0.006 + 20).toInt()
             previous < 75_000 && (amount + previous) > 75_000 ->
-                (((amount + previous) - 75000) * 0.006 +20).toInt()
+                (((amount + previous) - 75_000) * 0.006 +20).toInt()
             else -> 0
         }
         "VK Pay" -> 0
